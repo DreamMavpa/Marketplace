@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="{{ url_for('static', filename= 'css/main.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename= 'css/media.css') }}"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename= 'css/popup.css') }}"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename= 'css/basket.css') }}"/> 
+    <script src="{{ url_for('static', filename= 'js/basket.js') }}"></script>
+    <script src="{{ url_for('static', filename= 'js/modal.js') }}"></script>
+
+    <title>Document</title>
+  </head>
+  <body>
+ 
+      <header>
+        <div class="wrap-logo">
+          <a href="/" class="logo"><img class="img-logo" src="/static/img/photo_2023-05-18_11-59-51.jpg" alt=""/></a>
+        </div>
+        <div style="display: flex;">
+          <nav class="link-head">
+            <a href="/">Главная</a>
+            <a id="Contacts" href="#about">Контакты</a>
+            <a id="delivery-buy" href="#about">Доставка и оплата</a>
+            <a id="AboutUs" href="#about">О нас</a>
+            <div class="cart_btn"></div>
+          </nav>
+        </div>
+      </header>
+      <!-- burger-menu -->
+      <a id="burg-btn" class="lines"></a>
+      <a id="burg-btn-close" class="lines-2">✖</a>
+      <div class="burger-menu" id="burger-menu" style="display: none">
+        <div class="conteiner-burg">
+          <div><a href="./">Главная</a></div>
+          <div><a href="#about"></a>Контакт</div>
+          <div><a id="delivery-buy" href="#about">Доставка и оплата</a></div>
+          <div><a href="#about">О нас</a></div>
+        </div>
+      </div>
+      <!-- burger-menu -->
+
+      <div class="contactsPopUp-wrapper popup_item popUphidden">
+        <div class="contactsPopUp-block">
+          <span>Contacts:</span>
+          <br>
+          <span>Phone: xxxxxx</span>
+          <span>Email: xxxxxx</span>
+          <span>Telegrtam: xxxxxx </span>
+          <span>Discord: xxxxxx</span>  
+        </div>
+      </div>
+
+      <div class="aboutusPopUp-wrapper popup_item popUphidden">
+        <div class="aboutusPopUp-block">
+          <span>About us:</span>
+          <br>
+          <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga officia excepturi cum libero, quibusdam cumque ex veniam earum placeat ab minima. Alias cum fugit necessitatibus sit fugiat, nulla provident magni?</span>
+        </div>
+      </div>
+
+
+      <div class="cart_wrapper hidden ">
+        <div class="cart_block">
+          <div class="cart_label"><span>Корзина</span></div>
+          <hr>
+          <div class="cart_body"> 
+            <ul class="cart_item_list">
+            </ul>
+          </div>
+          <div class="total_price_block">
+            <span class="total_price_content"></span>
+          </div>
+          <hr>
+          <div class="cart_form">
+            <div class="cart-input-group">
+              <label for="cart_name">Ваше ФИО</label>
+              <input class="cart-input" type="text" id="cart_name" placeholder="Глеб Харьков">
+            </div>
+            <div class="cart-input-group">
+              <label for="cart_email">Ваш Email</label>
+              <input class="cart-input" type="email" id="cart_email" placeholder="exampl@email.dom">
+            </div>
+            <div class="cart-input-group">
+              <label for="cart_tel">Ваш телефон</label>
+              <input class="cart-input" type="tel" id="cart_tel" placeholder="+7**********" pattern="[0-9]{1}[0-9]{3}[0-9]{3}[0-9]{4}" oninput="formatTel(this)">
+            </div>
+            <div class="cart-input-group">
+              <label for="cart_address">Адрес доставки</label>
+              <input class="cart-input" type="text" id="cart_address" placeholder="Пушкинская ул., д. 276, Ижевск">
+            </div>
+            <div class="cart-input-group cart-input-group_SA">
+              <label for="cart_address">Коментарий к заказу</label>
+              <textarea name="" id="cart_comment" cols="30" rows="10"></textarea>
+             
+            </div>
+            <button class="cart_btn_buy" onclick="btn_drop_json()">Сделать заказ</button>
+          </div>
+        </div>
+      </div>
+      
+    <main>
+      <div class="info">
+        <h1 class="label">МАГАЗИН: LOGAM</h1>
+        <!-- <span class="description">Наша компания занимается производством сварочных столов 3D с системой D16.</span> -->
+        <span class="shop-label">Наша компания занимается производством сварочных столов 3D с системой D16.</span>
+        
+        <a class="WhatsApp-btn">Написать в WhatsApp</a>
+      </div>  
+      <div class="shop-container">
+        <div class="shop-grid">
+          <a href="./tables">
+            <div class="shop-item" id="shop-item-">
+              <div class="shop-item-img" style="background: url('https://vektor-grupp.ru/upload/resize_cache/webp/upload/medialibrary/bfd/bfdcd159511460f42b305b61e68310b0.webp') no-repeat; background-position: center; background-size: cover;"></div>
+              <div class="preview-text">
+              <div class="product-name">Столы</div>
+              <!-- <div class="short-description">Столы - это предметы мебели, которые используются для различных целей</div> -->
+              <div class="product-price">от 50 000 руб.</div>
+              </div>
+            </div>
+          </a>
+          <a href="./tooling">
+            <div class="shop-item" id="shop-item-">
+              <div class="shop-item-img" style="background: url('https://i.ytimg.com/vi/Af_YN0KPoq4/maxresdefault.jpg') no-repeat; background-position: center; background-size: cover;"></div>
+              <div class="preview-text">
+              <div class="product-name">Оснастка</div>
+              <!-- <div class="short-description">Оснастка для сварочных столов относится к оборудованию и аксессуарам</div> -->
+              <div class="product-price">от мало руб.</div>
+              </div>
+            </div>
+          </a>
+          <a href="./others">
+            <div class="shop-item" id="shop-item-">
+              <div class="shop-item-img" style="background: url('https://i.ytimg.com/vi/Af_YN0KPoq4/maxresdefault.jpg') no-repeat; background-position: center; background-size: cover;"></div>
+              <div class="preview-text">
+              <div class="product-name">Others</div>
+              <!-- <div class="short-description">I'm sorry, I'm not sure what you are asking. Can you please provide more information or clarify your question?</div> -->
+              <div class="product-price">от мало руб.</div>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+      <footer></footer>
+    </main>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="{{ url_for('static', filename = 'js/burger.js') }}"></script>
+    <script src="{{ url_for('static', filename = 'js/modal.js') }}"></script>
+  </body>
+</html>

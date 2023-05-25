@@ -1,0 +1,56 @@
+.contactsPopUp-wrapper {
+    .contactsPopUp-block {
+        background: #fff;
+        padding: 100px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+}
+.aboutusPopUp-wrapper {
+    .aboutusPopUp-block {
+        background: #fff;
+        padding: 100px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+}
+.popup_item {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    transition: opacity 0.3s, background 0.3s;
+    background: rgba($color: #000000, $alpha: 0.3);
+}
+.popUpHover {
+    cursor: pointer;
+    background: rgba($color: #000000, $alpha: 0.4);
+    transition: all 0.5s;
+}
+.popUphidden {
+    opacity: 0;
+    visibility: hidden;
+    animation: closePopUp 0.2s;
+}
+.popUpshown {
+    opacity: 1;
+    visibility: visible;
+    animation: showPopUp 0.2s;
+}
+@keyframes showPopUp {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+}
+@keyframes closePopUp {
+    0% {opacity: 1;}
+    100% {opacity: 0;}
+}

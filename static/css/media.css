@@ -1,0 +1,86 @@
+@media (max-width: 929px){
+    .link-head{
+        display: none;
+    }
+      header {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        flex-wrap: wrap;
+        padding: 20px 10px;
+        max-height: 120px;
+   
+      }
+      .lines{
+       display:flex; 
+    }
+    header a.logo {
+        font-size: 25px;
+        font-weight: bold;
+        margin-left: 0px;
+    }
+    .postion-block{
+     
+      padding: 30px 30px 30px 0px;
+      
+  }
+}
+
+@media only screen and (max-width:580px){
+  .label {
+    font-weight: 600;
+    color: #000000;
+    font-size: 40px;
+  }
+}
+
+@media only screen and (max-width:450px){
+  .label {
+    font-weight: 600;
+    color: #000000;
+    font-size: 30px;
+    overflow: auto;
+    white-space: nowrap;
+  }
+}
+
+@media (min-width: 275px) and (max-width:285px){
+
+  .img-logo{
+    margin-top:10px;
+    width: 170px;
+}
+    .shop-item{
+      max-width: 213px;
+    }
+    .lines{
+      right: 15px;
+      width: 25px;
+      
+    }
+    .lines-2{
+      right: 16px;
+      width: 19px;
+    }
+  
+}
+
+@media only screen and (min-width:0px) and (max-width: 1350px){
+  .postion-block{
+    max-width: 90% !important;
+    /* width: 800px; */
+    display: flex !important;
+    grid-gap: 0 !important;
+    overflow: auto;
+    white-space: nowrap;
+    flex-wrap: nowrap !important;
+    flex-direction: row;
+
+  }
+  .postion-block :first-child {
+    margin: 0 !important;
+  }
+  .postion-block a {
+    margin: 0px 0px 0px 20px;
+  }
+}
