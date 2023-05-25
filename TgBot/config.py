@@ -1,8 +1,8 @@
 from aiogram import *
 from aiogram.contrib.fsm_storage.memory import MemoryStorage
 
-token = '6193122952:AAGwk9cb5qI-oX2MoQ4InDEzJ4KWy-8vpXw'
-admin_id = '5999623896'
+token = 'token'
+admin_id = 'admin_id'
 
 bot = Bot(token)
 storage = MemoryStorage()
