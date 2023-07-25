@@ -29,7 +29,7 @@
 @media only screen and (max-width:580px){
   .label {
     font-weight: 600;
-    color: #000000;
+    color: #000030;
     font-size: 40px;
   }
 }
@@ -37,10 +37,10 @@
 @media only screen and (max-width:450px){
   .label {
     font-weight: 600;
-    color: #000000;
+    color: #000030;
     font-size: 30px;
     overflow: auto;
-    white-space: nowrap;
+    
   }
 }
 

@@ -5,7 +5,7 @@ from inlinekey.InlineKeyBoard import *
 from Main_function.Edit_Folder import *
 import os
 import sys
-sys.path.insert(1,os.path.abspath('../Marketplace/'))
+sys.path.insert(1,os.path.abspath('../laserbit/'))
 from DB.db import init_db,read_sqlite_table
 
 

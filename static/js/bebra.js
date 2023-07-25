@@ -29,7 +29,7 @@ async function get_modal_id_js(modal_content_id, dir_name, db) {
   async function btn_drop_json() {
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
     
-  
+    
     cart.push({
       name : document.querySelector("#cart_name").value,
       email : document.querySelector("#cart_email").value,
@@ -38,7 +38,7 @@ async function get_modal_id_js(modal_content_id, dir_name, db) {
       comment: document.querySelector("#cart_comment").value,
     })
  
-    
+    console.log(cart)
     let drop_json_dict = JSON.stringify(cart);
   
     

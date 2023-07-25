@@ -32,6 +32,6 @@ keyboard_cancellation.add(*cancellation_buttons)
 
 def keyboard_btn_photo():
     keyboard = ReplyKeyboardMarkup(resize_keyboard=True)
-    keyboard.row("Отмена")
     keyboard.row("Создать объявление")
+    keyboard.row("Отмена")
     return keyboard

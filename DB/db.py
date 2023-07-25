@@ -36,6 +36,7 @@ def init_db(force:bool = False):
         price_8 INT,
         price_10 INT,
         price_12 INT,
+        assembly_price INT,
         full_description TEXT,
         Size_Table TEXT,
         Material_Table TEXT,
@@ -47,6 +48,7 @@ def init_db(force:bool = False):
         name_product TEXT,
         product_price TEXT,
         full_description TEXT,
+        metal_thickness TEXT,
         PRIMARY KEY(id)
     )''')
 
@@ -144,19 +146,19 @@ def get_last_id(name_db):
 
 
 
-def add_message_shop_list_table(name_product:str, price_4: int, price_5: int, price_6: int, price_8: int, price_10: int, price_12: int, full_description: str,Size_Table:str,Material_Table:str,name_db):
+def add_message_shop_list_table(name_product:str, price_4: int, price_5: int, price_6: int, price_8: int, price_10: int, price_12: int, assembly_price: int, full_description: str,Size_Table:str,Material_Table:str,name_db):
         
         conn = create_connection()
         c = conn.cursor()
-        c.execute(f'''INSERT INTO {name_db} (name_product,price_4, price_5, price_6, price_8, price_10, price_12,full_description,Size_Table,Material_Table) VALUES (?,?,?,?,?,?,?,?,?,?)''', (name_product,price_4, price_5, price_6, price_8, price_10, price_12,full_description,Size_Table,Material_Table))
+        c.execute(f'''INSERT INTO {name_db} (name_product,price_4, price_5, price_6, price_8, price_10, price_12, assembly_price, full_description,Size_Table,Material_Table) VALUES (?,?,?,?,?,?,?,?,?,?,?)''', (name_product,price_4, price_5, price_6, price_8, price_10, price_12, assembly_price, full_description,Size_Table,Material_Table))
         conn.commit()
 
 
-def add_message_shop_list_tooling(name_product:str, product_price: str, full_description: str,name_db):
+def add_message_shop_list_tooling(name_product:str, product_price: str, full_description: str, metal_thickness:str, name_db):
 
         conn = create_connection()
         c = conn.cursor()
-        c.execute(f'''INSERT INTO {name_db} (name_product,product_price,full_description) VALUES (?,?,?)''', (name_product,product_price,full_description))
+        c.execute(f'''INSERT INTO {name_db} (name_product,product_price,full_description,metal_thickness) VALUES (?,?,?,?)''', (name_product,product_price,full_description,metal_thickness))
         conn.commit()
    
 

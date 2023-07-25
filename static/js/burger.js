@@ -7,10 +7,17 @@ const popupBlock = document.querySelector(".popups");
 const contactsBlock = document.querySelector(".contacts_block");
 const aboutUsBlock = document.querySelector(".aboutus_block");
 const contactsBtn = document.querySelector("#Contacts");
+const deliveryBtn = document.querySelector("#delivery-buy");
 const aboutUsBtn = document.querySelector("#AboutUs");
 const cartBtn = document.querySelector(".cart_btn");
 const cartWrapper = document.querySelector(".cart_wrapper");
 const cartBlock = document.querySelector(".cart_block");
+
+
+
+
+
+
 
 
 // Burger menu dynamic
@@ -46,7 +53,10 @@ window.addEventListener('resize', function(){
 // Popup dynamic
 
 const contactsPopUp = document.querySelector(".contactsPopUp-wrapper")
+const deliveryPopUp = document.querySelector(".deliveryPopUp-wrapper")
 const aboutusPopUp = document.querySelector(".aboutusPopUp-wrapper")
+
+
 
 const popup_item = document.querySelectorAll(".popup_item")
 var body = document.getElementsByTagName('body')[0];
@@ -61,14 +71,45 @@ contactsBtn.addEventListener("click", () => {
     document.documentElement.scrollTop = 0; // Для Chrome, Firefox, IE and Opera
   
 })
-contactsPopUp.addEventListener("click", () => {
+
+
+deliveryBtn.addEventListener("click", () => {
+    deliveryPopUp.classList.remove("popUphidden")
+    deliveryPopUp.classList.add("popUpshown")
+
+
+    body.style.overflow = 'hidden';
+   
+    document.body.scrollTop = 0; // Для Safari
+    document.documentElement.scrollTop = 0; // Для Chrome, Firefox, IE and Opera
+  
+})
+
+
+
+contactsPopUp.addEventListener("click", (e) => {
+
+    if (!e.target.closest(".contactsPopUp-block")) {
     contactsPopUp.classList.remove("popUpshown")
     contactsPopUp.classList.add("popUphidden")
 
     body.style.overflow = 'visible';
+    }
+})
+
+
+
+deliveryPopUp.addEventListener("click", (e) => {
+    if (!e.target.closest(".deliveryPopUp-block")) {
+    deliveryPopUp.classList.remove("popUpshown")
+    deliveryPopUp.classList.add("popUphidden")
+
+    body.style.overflow = 'visible';
+    }
 })
 
 aboutUsBtn.addEventListener("click", () => {
+    
     aboutusPopUp.classList.remove("popUphidden")
     aboutusPopUp.classList.add("popUpshown")
     document.body.scrollTop = 0; // Для Safari
@@ -78,11 +119,14 @@ aboutUsBtn.addEventListener("click", () => {
    
 })
 
-aboutusPopUp.addEventListener("click", () => {
+aboutusPopUp.addEventListener("click", (e) => {
+    if (!e.target.closest(".aboutusPopUp-block")) {
     aboutusPopUp.classList.remove("popUpshown")
     aboutusPopUp.classList.add("popUphidden")
     body.style.overflow = 'visible';
+    }
 })
+
 contactsPopUp.addEventListener("mouseover", (e) => {
     if (!e.target.closest(".contactsPopUp-block")) {
         contactsPopUp.classList.add("popUpHover")
@@ -91,12 +135,22 @@ contactsPopUp.addEventListener("mouseover", (e) => {
         contactsPopUp.classList.remove("popUpHover")
     }
 });
+
 aboutusPopUp.addEventListener("mouseover", (e) => {
     if (!e.target.closest(".aboutusPopUp-block")) {
         aboutusPopUp.classList.add("popUpHover")
     }
     if (e.target.closest(".aboutusPopUp-block")) {
         aboutusPopUp.classList.remove("popUpHover")
+    }
+});
+
+deliveryPopUp.addEventListener("mouseover", (e) => {
+    if (!e.target.closest(".deliveryPopUp-block")) {
+        deliveryPopUp.classList.add("popUpHover")
+    }
+    if (e.target.closest(".deliveryPopUp-block")) {
+        deliveryPopUp.classList.remove("popUpHover")
     }
 });
 
@@ -125,12 +179,17 @@ let renderCart = () => {
         const div = document.createElement("div");
         div.setAttribute("id", element["id"]);
         div.innerHTML = `
+        <hr class = "hr-basket" id="hr-${element["id"]}">
             <li class="cart_item">
                 <div><img class="cart_ProductImg" src=${element["img"]}></div>
                 <div class="cart_ProductName">${element["name"]}</div>
-                <div class="cart_ProductPrice" id="cart_item-price">${parseInt(element["price"])} p.</div>
+                <div class="cart_ProductPrice" id="cart_item-price">${parseInt(element["price"]) * parseInt(element["quantity"])}p.</div>
+                <button class="minusBasket" >-</button>
+                <div class="countBasket"> ${parseInt(element["quantity"])} </div>
+                <button class="plussBasket" >+</button>
                 <div class="cart_ProductDeletBtn"> X </div>
             </li>
+            
         `;
         cartBody.appendChild(div);
     });
@@ -142,15 +201,85 @@ let renderCart = () => {
         sum += Number(parseInt(`${e.innerHTML}`));
     });
     totalPriceContent.innerText = `Сумма: ${sum} p.`;
+
+
+
+    //увеличение корзины по +
+    let plussBasket = document.querySelectorAll(".plussBasket");
+    plussBasket.forEach((e, i) => {
+      e.addEventListener("click", (event) => {
+        event.stopPropagation();
+    
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    
+        cart[i].quantity = Number(cart[i].quantity) + 1; // Увеличиваем значение quantity
+    
+        localStorage.setItem('cart', JSON.stringify(cart));
+    
+        renderCart();
+    
+        let totalQuantity = cart.reduce((total, item) => total + Number(item.quantity), 0); // Вычисляем общее количество товаров в корзине
+    
+        document.querySelector('.basket-check-warp').style.display = 'block';
+        document.querySelector('.basket-check').innerText = totalQuantity;
+    
+        console.log(cart);
+      });
+    });
+
+
+
+    let minusBasket = document.querySelectorAll(".minusBasket");
+    minusBasket.forEach((e, i) => {
+      e.addEventListener("click", (event) => {
+        event.stopPropagation();
+    
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        
+        if (Number(cart[i].quantity) > 1){
+        cart[i].quantity = Number(cart[i].quantity) - 1; // Увеличиваем значение quantity
+    
+        localStorage.setItem('cart', JSON.stringify(cart));
+    
+        renderCart();
+    
+        let totalQuantity = cart.reduce((total, item) => total + Number(item.quantity), 0); // Вычисляем общее количество товаров в корзине
+    
+        document.querySelector('.basket-check-warp').style.display = 'block';
+        document.querySelector('.basket-check').innerText = totalQuantity;
+    
+        console.log(cart);
+    }
+    
+      });
+    });
+    
+    
+
     let cartProductDeletBtn = document.querySelectorAll(".cart_ProductDeletBtn")
     cartProductDeletBtn.forEach((e, i) => {
+     
         e.addEventListener("click", (event) => {
             event.stopPropagation()
             let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            let count_quantity = 0
+            
+           
             removeObjectAndShiftIds(cart, i)
+            for(j=0; j<cart.length; j++){
+                count_quantity += Number(cart[j]['quantity'])
+                console.log(cart[j]['quantity'])
+            }
+
             localStorage.setItem('cart', JSON.stringify(cart));
             renderCart()
-            // e.parentNode.remove()
+            if (cart.length > 0){
+                document.querySelector('.basket-check-warp').style.display = 'block';
+                document.querySelector('.basket-check').innerText = count_quantity
+              }
+            else if (cart.length === 0){
+                document.querySelector('.basket-check-warp').style.display = 'none'
+            }
         })
         
     })
@@ -163,8 +292,6 @@ cartBtn.addEventListener("click", () => {
     document.body.scrollTop = 0; // Для Safari
     document.documentElement.scrollTop = 0; // Для Chrome, Firefox, IE and Opera
     renderCart()
-    let cart = JSON.parse(localStorage.getItem('cart')) || [];
-    console.log(cart)
     
 });
 
@@ -184,4 +311,14 @@ cartWrapper.addEventListener("click", (e) => {
         body.style.overflow = 'visible';
     }
 });
+
+
+
+
+
+
+
+
+
+
 

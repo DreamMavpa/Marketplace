@@ -24,7 +24,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  max-height: 1000px;
+  
   z-index: 600;
   font-family: "Roboto", Arial, sans-serif;
   -webkit-box-pack: center;
@@ -40,7 +40,7 @@
 .cart_wrapper .cart-input {
   -webkit-font-smoothing: antialiased;
   font-family: "Roboto", Arial, sans-serif;
-  margin: 20px 0px 0px 0px;
+  /* margin: 20px 0px 0px 0px; */
   padding: 5px 0px 0px 10px;
   font-size: 18px;
   border-top: 0px;
@@ -51,7 +51,7 @@
           box-sizing: border-box;
   outline: none;
   border-radius: 0;
-  color: #000000;
+  color: #000030;
 }
 
 .cart_wrapper .cart-input:focus {
@@ -65,22 +65,24 @@
 
 
 .cart_wrapper .cart_block {
-    margin: 100px 0px;
-    /* margin-top: 250px; */
-    width: 560px;
-    height: auto;
-    padding: 30px;
-    background: #fff;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    justify-content: center;
+  margin: 100px 0px;
+  /* margin-top: 250px; */
+  width: 700px;
+  height: auto;
+  padding: 30px;
+  padding-left: 70px;
+  padding-right: 70px;
+  background: #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
 }
 .cart_wrapper .cart_block .cart_label {
   display: -webkit-box;
@@ -94,11 +96,27 @@
           justify-content: flex-start;
 }
 .cart_wrapper .cart_block .cart_label span {
+  color: #000030;
   font-size: 1.8rem;
   font-weight: bold;
 }
+.total_price_content{
+  color: #000030;
+}
+.cart_name{
+  color: #000030;
+}
+.cart_email{
+  color: #000030;
+}
 .cart_wrapper .cart_block hr {
-  margin: 35px 0;
+  margin: 16px 0;
+}
+.cart_tel{
+  color: #000030;
+}
+.cart_address{
+  color: #000030;
 }
 .cart_wrapper ul {
   list-style: none;
@@ -116,12 +134,13 @@
   text-decoration: none;
 }
 .cart_wrapper ul li .cart_ProductImg {
-  width: 120px;
-  height: 120px;
+  width: 83px;
+  height: 83px;
   border-radius: 2px;
   border: 1px solid rgba(0, 0, 0, 0.1);
 }
 .cart_wrapper ul li .cart_ProductName {
+  color: #000030;
   width: 150px;
   word-wrap: break-word;
   text-align: center;
@@ -130,6 +149,7 @@
           align-items: center;
 }
 .cart_wrapper ul li .cart_ProductPrice {
+  color: #000030;
   width: 100px;
   -webkit-box-align: center;
       -ms-flex-align: center;
@@ -137,10 +157,15 @@
   text-align: center;
 }
 .cart_wrapper ul li .cart_ProductDeletBtn {
+  color: #000030;
   -webkit-transition: all 0.2s;
   transition: all 0.2s;
 }
+.countBasket{
+  color: #000030;
+}
 .cart_wrapper ul li .cart_ProductDeletBtn:hover {
+  color: #000030;
   cursor: pointer;
   -webkit-transform: scale(1.2);
           transform: scale(1.2);
@@ -164,13 +189,13 @@
           box-sizing: content-box;
   font-family: "Roboto", Arial, sans-serif;
   font-weight: 300;
-  color: #000000;
+  color: #000030;
   font-size: 15px;
   line-height: 1.55;
   display: table;
   position: relative;
   cursor: pointer;
-  margin: 3px 0 10px 0;
+  
 }
 .cart_wrapper .cart_form {
   display: -webkit-box;
@@ -192,8 +217,8 @@
   margin: 25px 0px;
   width: 100%;
   height: 50px;
-  border: 1px solid #000;
-  background: #000;
+  border: 1px solid #000030;
+  background: #000030;
   color: #fff;
   font-weight: 700;
   font-size: 18px;
@@ -202,17 +227,17 @@
 }
 .cart_wrapper .cart_form .cart_btn_buy:hover {
   background: #fff;
-  color: #000;
+  color: #000030;
   cursor: pointer;
 }
 
 .cart_btn {
-  position: fixed;
-  right: 25px;
+  position: sticky;
+
   width: 35px;
   height: 35px;
   background: url("../img/shopping-cart.png") no-repeat center/contain;
-  z-index: 100000;
+  z-index: 999;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   padding: 5px;
@@ -234,5 +259,29 @@
   padding-right: 30px;
   height: 100%;
   overflow-y: scroll;
-  max-height: 250px;
+  max-height: 334px;
+}
+
+
+.bsket-warp{
+  display: block;
+  margin-bottom: 30px;
+  margin-left: 20px;
+  margin-top: 6px;
+  width: 30px;
+}
+.basket-check-warp{
+  margin-top: -45px;
+  margin-left: 32px;
+  width: 21px;
+  z-index: 9998;
+  background: #ebb33b;
+  border-radius: 20px;
+}
+
+.basket-check{
+  z-index: 9999;
+  text-align: center;
+  color: rgb(0, 0, 0);
+  font-family: Arial,Helvetica,sans-serif;
 }

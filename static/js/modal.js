@@ -11,7 +11,7 @@ async function get_modal_id_js(modal_content_id, dir_name, db) {
 function json_generate_block(json_img, modal_content_id, dir_name, db) {
 
   const len_js_img = json_img[modal_content_id].length;
-  const app = document.querySelector('.product-pictures');
+
   const popUpImgScroll = document.querySelector(".big-block-img")
   let get_group_img_block = '';
   let get_group_img_block_popUp = '';
@@ -27,7 +27,7 @@ function json_generate_block(json_img, modal_content_id, dir_name, db) {
     
   }
 
-  app.insertAdjacentHTML('afterbegin', get_group_img_block);
+
   popUpImgScroll.insertAdjacentHTML('afterbegin', get_group_img_block_popUp);
 }
   
@@ -46,8 +46,13 @@ async function btn_drop_json() {
     alert('Номер телефона введен не полностью!')
   }
 
+  else if (cart.length < 1){
+    alert('Добавьте товар в корзину')
+  }
+
   else{
-    
+
+      console.log(cart)
         cart.push({
           name : document.querySelector("#cart_name").value,
           email : document.querySelector("#cart_email").value,
@@ -65,7 +70,12 @@ async function btn_drop_json() {
         } catch (error) {
           console.log(error);
         }
+              localStorage.clear();
+              localStorage.setItem('changeStyles', true);
+              window.location.href = '/';
       }
+
+
 }
 
 
@@ -117,9 +127,6 @@ window.addEventListener("load", function() {
   })
 
 
-
-
-
   
 });
 
@@ -141,19 +148,21 @@ function btnSubmit()
   var body = document.getElementsByTagName('body')[0];
   const btnNextDisplay = document.querySelector(".btn-carousel-next")
   const btnPrevDisplay = document.querySelector(".btn-carousel-prev")
+  const sliderBlock = document.querySelector(".big-block-img")
+
   imgBtn.addEventListener('click', () => {
       contactsPopUp.classList.remove("popUphidden")
       contactsPopUp.classList.add("popUpshown")
   
       let clonedElement = imgBtn.cloneNode(true);
-  
+      sliderBlock.style.display = '-webkit-box'
     
       btnNextDisplay.style.display = "block";
       btnPrevDisplay.style.display = "block";
       clonedElement.className = "zxc";
       // popUpImgScroll.appendChild(clonedElement)
       body.style.overflow = 'hidden';
-  
+
       document.body.scrollTop = 0; 
       document.documentElement.scrollTop = 0;
 
@@ -162,11 +171,11 @@ function btnSubmit()
 
 
 contactsPopUp.addEventListener("click", () => {
+  sliderBlock.style.display = 'none'
     btnNextDisplay.style.display = "none";
     btnPrevDisplay.style.display = "none";
     contactsPopUp.classList.remove("popUpshown")
     contactsPopUp.classList.add("popUphidden")
-    // popUpImgScroll.innerHTML = ''
     body.style.overflow = 'visible';
   })
 
@@ -212,7 +221,48 @@ nextBtn.addEventListener('click', () => {
   });
   
   
-}
+
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const productsGridBlock = document.querySelector('.products-grid-block');
+    const numberOfElements = productsGridBlock ? productsGridBlock.children.length : 0;
+    const carouselTovar = document.querySelector('.products-block');
+    const prevBtnTovar = document.querySelector('#tovarSkrollPrev');
+    const nextBtnTovar = document.querySelector('#tovarSkrollNext');
+
+    let currentIndex = 0;
+
+    function moveToIndexTovar(index) {
+      carouselTovar.scrollTo({
+        left: carouselTovar.offsetWidth * index,
+        behavior: 'smooth' // Добавим параметр behavior со значением 'smooth'
+      });
+    }
+
+    moveToIndexTovar(currentIndex);
+
+    prevBtnTovar.addEventListener('click', () => {
+      if (currentIndex > 0) {
+        currentIndex--;
+        moveToIndexTovar(currentIndex);
+      }
+    });
+
+    nextBtnTovar.addEventListener('click', () => {
+      if (currentIndex < (numberOfElements / 3 - 1)) {
+        currentIndex++;
+        moveToIndexTovar(currentIndex);
+      }
+    });
+});
+
   
+  
+    
+
+}
+
+
+
   
   

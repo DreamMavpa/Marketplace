@@ -62,7 +62,7 @@ def get_img(db_img):
 
         for i in db_img[db_arr[k]]:
             test = os.walk(f'''static\\img\\img_shop\\{name_folder_arr[k]}\\{i}\\img''')
-        
+            
             path, dirs, files = next(test)
             
             for j in files:
@@ -72,6 +72,7 @@ def get_img(db_img):
         full_data_dict[db_arr[k]] = name_img_dict
         name_img_dict = {}
     return full_data_dict
+
 
 
 @app.route('/api')
@@ -109,8 +110,12 @@ def tables():
     c = conn.cursor()
     record = c.execute('SELECT * FROM shop_list_table')
     items_table =  c.fetchall()
-
-    return render_template("tables.html", items_table=items_table)
+    flag_product = 'Сварочно-сборочные столы 3D'
+   
+    if items_table == []:
+        return render_template("notProduct.html", flag_product=flag_product)
+    else:
+        return render_template("tables.html", items_table=items_table)
 
 @app.route("/tooling")
 def tooling():
@@ -118,8 +123,12 @@ def tooling():
     c = conn.cursor()
     record = c.execute('SELECT * FROM shop_list_tooling')
     items_tooling =  c.fetchall()
-
-    return render_template("tooling.html", items_tooling=items_tooling)
+    flag_product = 'Оснастка'
+    if items_tooling == []:
+        return render_template("notProduct.html", flag_product=flag_product)
+    else:
+        return render_template("tooling.html", items_tooling=items_tooling)
+    
 
 @app.route("/others")
 def other_products():
@@ -127,8 +136,12 @@ def other_products():
     c = conn.cursor()
     record = c.execute('SELECT * FROM other_products_list')
     other_products =  c.fetchall()
+    flag_product = 'Другая продукция'
 
-    return render_template("others.html", other_products=other_products)
+    if other_products == []:
+        return render_template("notProduct.html", flag_product=flag_product)
+    else:
+        return render_template("others.html", other_products=other_products)
 
 
 @app.route('/<tb>/product-modal/<id>')
@@ -142,8 +155,16 @@ def id(tb,id):
         product_type = 'table'
         db_name = 'shop_list_table'
 
-        list_mm = ['4mm','5mm','6mm','8mm','10mm','12mm']
-     
+
+
+        list_mm = ['4мм','5мм','6мм','8мм','10мм','12мм']
+
+
+        test = os.walk(f'''static\\img\\img_shop\\table\\{id}\\img''')
+            
+        path, dirs, files_img = next(test)
+        
+
 
         price_mm = {}
 
@@ -152,7 +173,7 @@ def id(tb,id):
             if list_json[0][i] != 0:
                 price_mm[list_mm[i-2]] = str(list_json[0][i])
                 first_item.append(str(list_json[0][i]))
-
+        
 
 
     elif tb == 'tooling':
@@ -164,17 +185,23 @@ def id(tb,id):
         db_name = 'shop_list_tooling'
         first_item = list_json[0][2]
         price_mm=None
+        test = os.walk(f'''static\\img\\img_shop\\tooling\\{id}\\img''')
+            
+        path, dirs, files_img = next(test)
 
     elif tb == 'others':
         conn = create_connection_db()
         c = conn.cursor()
         record = c.execute("SELECT * FROM other_products_list WHERE id = ?", (id, ))
         list_json = c.fetchall()
-        product_type = 'products_list'
+        product_type = 'other_product'
         db_name = 'other_products_list'
         tb = 'other_product'
         first_item = list_json[0][2]
         price_mm=None
+        test = os.walk(f'''static\\img\\img_shop\\other_product\\{id}\\img''')
+            
+        path, dirs, files_img = next(test)
 
     record = c.execute('SELECT * FROM shop_list_tooling')
     items_tooling =  c.fetchall()
@@ -186,7 +213,7 @@ def id(tb,id):
     items_other =  c.fetchall()
 
  
-    return render_template("product-modal.html",  list_json=list_json,first_item=first_item, price_mm=price_mm, items_table=items_table,
+    return render_template("product-modal.html",product_id = id, files_img = files_img,  list_json=list_json,first_item=first_item, price_mm=price_mm, items_table=items_table,
                             items_tooling=items_tooling, items_other=items_other, tb=tb, db_name = db_name,product_type=product_type)
 
 
@@ -210,12 +237,12 @@ def drop_in_tg():
         # if request_dict[i]['type'] == 'other':
         #     items += 'Тип продукта: '+request_dict[i]['type']+' Название: '+request_dict[i]['name']+'\n'
 
-        if len(request_dict[i]['name']) <= 13: 
+        # if len(request_dict[i]['name']) <= 13: 
             items += ' Тип продукта: '+str(request_dict[i]['type'])+'\n'+' Название: '+str(request_dict[i]['name'])+'\n'+' Цена: '+str(request_dict[i]['price'])+'\n''---------------------------------------------------------------'+'\n'
             all_price += int(request_dict[i]['price'])
-        else:
-            items += ' Тип продукта: '+str(request_dict[i]['type'])+'\n'+' Название: '+str(request_dict[i]['name'][:20])+'...'+'\n'+' Цена: '+str(request_dict[i]['price'])+'\n''---------------------------------------------------------------'+'\n'
-            all_price += int(request_dict[i]['price'])
+        # else:
+        #     items += ' Тип продукта: '+str(request_dict[i]['type'])+'\n'+' Название: '+str(request_dict[i]['name'][:20])+'...'+'\n'+' Цена: '+str(request_dict[i]['price'])+'\n''---------------------------------------------------------------'+'\n'
+        #     all_price += int(request_dict[i]['price'])
     
     
     form_info = f'''

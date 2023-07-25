@@ -1,4 +1,6 @@
 .contactsPopUp-wrapper .contactsPopUp-block {
+  color: #000030;
+  font-family: 'Open Sans', sans-serif;
   background: #fff;
   padding: 100px;
   display: -webkit-box;
@@ -17,9 +19,89 @@
           align-items: center;
 }
 
+.contact-warp{
+  font-size: 25px;
+  color: #000030;
+  font-family: 'Open Sans', sans-serif;
+  display: flex;
+  
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          
+}
+.conatc-span{
+  font-size: 25px;
+  font-weight: bold;
+}
+
+  .deliveryPopUp-wrapper .deliveryPopUp-block {
+    color: #000030;
+    font-family: 'Open Sans', sans-serif;
+    background: #fff;
+    padding: 100px;
+    max-width: 800px;
+    max-height: 700px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    overflow: auto; /* Добавлено свойство overflow */
+  }
+
+.deliveryPopUp-block span {
+  position: relative;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+.deliveryPopUp-conteiner div {
+
+  margin-bottom: 10px;
+}
+
+
+
+
+.basketEndPopUp-wrapper .basketEndPopUp-block {
+  color: #000030;
+  font-family: 'Open Sans', sans-serif;
+  background: #fff;
+  padding: 100px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+
+
 .big-block-img{
   width: 50%;
-  
   height: 80%;
   background-position: center;
   background-repeat: no-repeat;
@@ -29,19 +111,25 @@
   -webkit-box-direction: normal;
   -ms-flex-direction: row;
   flex-direction: row;
-  overflow-x: auto;
+  overflow-x: hidden;
   overflow-y: hidden;
   -ms-scroll-snap-type: x mandatory;
   scroll-snap-type: x mandatory;
   white-space: nowrap;
-  border: 1px solid #5e5e5e;
   -webkit-transition: all 0.2s;
   transition: all 0.2s;
-}
+  position: absolute;
+  z-index: 99999990;
+
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}  
 
 .zxc{
   width: 100%;
-  
   height: 100%;
 }
 
@@ -80,7 +168,7 @@
   height: 100vh;
   -webkit-transition: opacity 0.3s, background 0.3s;
   transition: opacity 0.3s, background 0.3s;
-  background: rgba(0, 0, 0, 0.3);
+  background: rgba(0, 0, 0, 0.7);
 }
 
 .popUpHover {
@@ -102,6 +190,60 @@
   visibility: visible;
   -webkit-animation: showPopUp 0.2s;
           animation: showPopUp 0.2s;
+}
+
+
+.btn-carousel-prev{
+  
+  width: 10%;
+  height: 79%;
+  position: absolute;
+  z-index: 9999999;
+  margin-left: 25%;
+  display: none;
+  font-size: 10vw;
+  background-color: transparent;
+  color: white;
+  border: none;
+  z-index: 99999999;
+
+  
+}
+
+.btn-carousel-prev img{
+  background-color: rgba(255, 255, 255, 0.74);
+  border-radius: 100px;
+  transition: all 0.3s;
+}
+
+.btn-carousel-next{
+  width: 10%;
+  height: 79%;
+  position: absolute;
+  z-index: 9999999;
+  right: 25%;
+  display: none;
+  font-size: 10vw;
+  background-color: transparent;
+  color: white;
+  border: none;
+  z-index: 99999999;
+
+}
+
+.btn-carousel-next img{
+  background-color: rgba(255, 255, 255, 0.74);
+  border-radius: 100px;
+  transition: all 0.3s;
+}
+
+
+.btn-carousel-next img:hover{
+  background-color: rgb(255, 255, 255);
+}
+
+.btn-carousel-prev img:hover{
+  background-color: rgb(255, 255, 255);
 }
 
 @-webkit-keyframes showPopUp {

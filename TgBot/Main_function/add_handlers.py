@@ -12,7 +12,7 @@ import os
 import sys
 from aiogram.types import CallbackQuery, Message
 from Main_function.State_group import *
-sys.path.insert(1,os.path.abspath('../Marketplace/'))
+sys.path.insert(1,os.path.abspath('../laserbit/'))
 from DB.db import init_db,add_message_shop_list_table,add_message_shop_list_tooling,read_sqlite_table
 from aiogram.dispatcher.filters import Text
 bot = Bot(token)
@@ -310,10 +310,17 @@ async def take_tovar_price_tooling(msg: types.Message,state: FSMContext):
             return
         
         price = data['price']
+        await bot.send_message(admin_id, f"толщина металла", reply_markup=keyboard_cancellation)
+        await Db_tooling.metal_thickness.set()
+
+# @dp.message_handler(state=Db_tooling.metal_thickness)
+async def take_tovar_metal_thickness_tooling(msg: types.Message,state: FSMContext):
+
+    async with state.proxy() as data:
+        data["metal_thickness"] = msg.text
+
         await bot.send_message(admin_id, f"Введи краткое описание", reply_markup=keyboard_cancellation)
         await Db_tooling.full_description.set()
-
-
 
 
 # @dp.message_handler(state=Db_tooling.full_description)
@@ -332,10 +339,14 @@ async def take_tovar_full_description_tooling(msg: types.Message, state: FSMCont
     folder_name_id = str(product_id)
     folder_name_cancellation = str(product_id)+'_'+str(name_towar)
     creat_img_folder(str(folder_name_cancellation),'tooling')
-    add_message_shop_list_tooling(name_product=str(data['name_towar']), product_price=str(data['price']), full_description=str(data['full_description']),name_db = 'shop_list_tooling') #ЗАПИСЬ В БД
+    add_message_shop_list_tooling(name_product=str(data['name_towar']), product_price=str(data['price']), full_description=str(data['full_description']), metal_thickness=data["metal_thickness"]  ,name_db = 'shop_list_tooling') #ЗАПИСЬ В БД
     check_db('shop_list_tooling')
     await bot.send_message(admin_id,'Добавьте фото товара', reply_markup=keyboard_cancellation) 
     await Db_tooling.product_preview.set()
+
+
+
+
 
 
 #///////////////////////////////////////////////////////////////////////////////////////////  Скачивание и проверка фото 
@@ -502,9 +513,24 @@ async def take_tovar_price_table_12(msg: types.Message,state: FSMContext):
             return
     global price
     price = data['price_12']
-    await bot.send_message(admin_id, f"Введите описание товара {name_towar}", reply_markup=keyboard_cancellation)
-    await Db_table.full_description.set()  
+    await bot.send_message(admin_id, f"Введите цену для сборки стола {name_towar}", reply_markup=keyboard_cancellation)
+    await Db_table.assembly_price.set()  
     
+
+
+
+# @dp.message_handler(state=Db_table.assembly_price)
+async def take_tovar_price_table_assembly_price(msg: types.Message,state: FSMContext):
+    async with state.proxy() as data:
+        if msg.text.isdigit():
+            data['assembly_price'] = int(msg.text)
+        else:
+            await bot.send_message(admin_id, "Введите число", reply_markup=keyboard_cancellation)
+            return
+    global price
+    price = data['assembly_price']
+    await bot.send_message(admin_id, f"Введите описание товара {name_towar}", reply_markup=keyboard_cancellation)
+    await Db_table.full_description.set()      
 #//////////////////////////////////////////////////////////////////////////////////////////////////////////PRICE END
 
 
@@ -554,7 +580,7 @@ async def take_tovar_material_table(msg: types.Message, state: FSMContext):
     folder_name_id = str(product_id)
     folder_name_cancellation = str(product_id)+'_'+str(name_towar)
     creat_img_folder(str(folder_name_cancellation),'table')
-    add_message_shop_list_table(name_product=str(data['name_towar']), price_4=int(data['price_4']), price_5=int(data['price_5']), price_6=int(data['price_6']), price_8=int(data['price_8']), price_10=int(data['price_10']), price_12=int(data['price_12']), full_description=str(data['full_description']), Size_Table=str(data['Size_Table']), Material_Table=str(data['Material_Table']),name_db = 'shop_list_table') #ЗАПИСЬ В БД
+    add_message_shop_list_table(name_product=str(data['name_towar']), price_4=int(data['price_4']), price_5=int(data['price_5']), price_6=int(data['price_6']), price_8=int(data['price_8']), price_10=int(data['price_10']), price_12=int(data['price_12']), assembly_price=int(data['assembly_price']), full_description=str(data['full_description']), Size_Table=str(data['Size_Table']), Material_Table=str(data['Material_Table']),name_db = 'shop_list_table') #ЗАПИСЬ В БД
     check_db('shop_list_table')
     await bot.send_message(admin_id,'Добавьте фото для карточки товара', reply_markup=keyboard_cancellation) 
     await Db_table.product_preview.set()
@@ -654,7 +680,7 @@ def reg_handler_add(dp: Dispatcher):
 
     dp.register_message_handler(take_tovar_price_tooling, state=Db_tooling.price)
 
-
+    dp.register_message_handler(take_tovar_metal_thickness_tooling,state=Db_tooling.metal_thickness)
 
     dp.register_message_handler(take_tovar_full_description_tooling,state=Db_tooling.full_description)
 
@@ -680,8 +706,10 @@ def reg_handler_add(dp: Dispatcher):
     dp.register_message_handler(take_tovar_price_table_8,state=Db_table.price_8)
 
     dp.register_message_handler(take_tovar_price_table_10,state=Db_table.price_10)
+
     dp.register_message_handler(take_tovar_price_table_12,state=Db_table.price_12)
 
+    dp.register_message_handler(take_tovar_price_table_assembly_price,state=Db_table.assembly_price)
 
 
 

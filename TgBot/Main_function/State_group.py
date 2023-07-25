@@ -13,7 +13,7 @@ class Db_tooling(StatesGroup):
         product_group = State()
         short_description = State()
         full_description = State()
-     
+        metal_thickness = State()        
 
 
 class Db_table(StatesGroup):
@@ -23,6 +23,7 @@ class Db_table(StatesGroup):
         price_8 = State()
         price_10 = State()
         price_12 = State()
+        assembly_price = State()
         name_towar = State()
         product_preview = State()
         product_group = State()

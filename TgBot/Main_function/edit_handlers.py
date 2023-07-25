@@ -8,7 +8,7 @@ from Main_function.Edit_Folder import *
 import os
 import sys
 from Main_function.State_group import *
-sys.path.insert(1,os.path.abspath('../Marketplace/'))
+sys.path.insert(1,os.path.abspath('../laserbit/'))
 from DB.db import init_db,add_message_shop_list_table,add_message_shop_list_tooling,read_sqlite_table,check_db_product_name
 from aiogram.dispatcher.filters import Text
 

@@ -25,7 +25,7 @@
   <div class="wrapper">
     <header>
       <div class="wrap-logo">
-        <a href="/" class="logo"><img class="img-logo" src="/static/img/photo_2023-05-18_11-59-51.jpg" alt=""/></a>
+        <a href="/" class="logo"><img class="img-logo" src="/static/img/logo.png" alt=""/></a>
       </div>
       <div style="display: flex;">
         <nav class="link-head">
@@ -33,7 +33,12 @@
           <a id="Contacts" href="#about">Контакты</a>
           <a id="delivery-buy" href="#about">Доставка и оплата</a>
           <a id="AboutUs" href="#about">О нас</a>
-          <div class="cart_btn"></div>
+          <div class="bsket-warp">
+            <div class="cart_btn"></div> 
+            <div class="basket-check-warp" style="display: none;">
+              <div class="basket-check"></div>
+            </div>
+          </div>
         </nav>
       </div>
     </header>
@@ -52,25 +57,90 @@
 
     <div class="contactsPopUp-wrapper popup_item popUphidden">
       <div class="contactsPopUp-block">
-        <span>Contacts:</span>
+        <span class="conatc-span">Контакт</span>
         <br>
-        <span>Phone: xxxxxx</span>
-        <span>Email: xxxxxx</span>
-        <span>Telegrtam: xxxxxx</span>
-        <span>Discord: xxxxxx</span>  
+        <div class="contact-warp">
+          <span>Phone: + 789237324589</span>
+          <span>Email: logam-group@mail.ru</span>
+          <span>YouTube: <a href="https://www.youtube.com/@LOGAM-group">youtube.com/@LOGAM-group</a></span>
+          <span>Telegrtam: @Owlomir </span>
+          <span>Адрес производства: г. Ижевск, ул. Спортивная, д. 71</span>  
+        </div>
+      </div>
+    </div>
+
+    <div class="deliveryPopUp-wrapper popup_item popUphidden">
+      <div class="deliveryPopUp-block">
+        <span>Оформление заказа</span>
+        <br>
+        <div class="deliveryPopUp-conteiner">
+          <div>
+            1. Выберете товар и добавьте его в корзину. После того, как выбраны все необходимые позиции - перейдите в корзину.
+          </div>
+          <div>
+            2. Заполните обязательные поля для оформления заказа и нажмите кнопку «Оформить заказ» (п.с. или как у нас там кнопка называется? Я не помню).
+          </div>
+          <div>
+            3. После оформления заявки с Вами свяжется менеджер для уточнения заказа, составит договор и выставит счет на оплату.
+          </div>
+        </div>
+    
+        <span>Оплата</span>
+        <div class="deliveryPopUp-conteiner">
+          <div>
+            Оплата осуществляется в два этапа:
+          </div>
+          <div>
+            1. Авансовый платеж составляет 50%.
+          </div>
+          <div>
+            2. Второй платеж 50% производится в день отгрузки товара.
+          </div>
+          <div>
+            Работаем по наличному/безналичному расчету от физических лиц и юридических лиц. Возможность оплаты по счету с НДС и без НДС.
+          </div>
+          <div>
+            Помогаем в оформлении документов для получения соц.контракта (гранта), консультируем, предоставляем всю тех.документацию, а также все необходимые документы для отчета перед службой занятости и налоговой службы.
+          </div>
+        </div>
+    
+        <span>Срок изготовления и доставка</span>
+        <div class="deliveryPopUp-conteiner">
+          <div>
+            Срок изготовления составляет 10-14 рабочих дней или по согласованию с клиентом.
+          </div>
+          <div>
+            Бесплатная доставка груза в пределах г. Ижевска или до терминала транспортной компании.
+          </div>
+          <div>
+            Доставка по России и странам СНГ осуществляется транспортной компанией за счет покупателя или путем самовывоза товара со склада нашей компании в г. Ижевск.
+          </div>
+          <div>
+            Отгрузка товара возможна только после полной оплаты заказа.
+          </div>
+        </div>
+    
+        <div>Более подробную консультацию по доставке и расчет стоимости можно получить у наших менеджеров:</div>
+        <div>тел. +7 (999) 999-99-99</div>
+        <div>эл.почта: logam-group@mail.ru</div>
       </div>
     </div>
     <div class="conteiner-slider">
-      <button class="btn-carousel-prev" style="width:200px; height: 200px; position: absolute; z-index: 9999999; display: none;" id="prevBtn">Предыдущий</button>
+      <button class="btn-carousel-prev" id="prevBtn"><img src="/static/img/arrows.png" alt="" style="width: 60%; transform: scaleX(-1);"></button>
+
+      <button class="btn-carousel-next" id="nextBtn"><img src="/static/img/arrows.png" alt="" style="width: 60%;"></button>
       <div class="big-block-img-wrapper popup_item popUphidden">
-        <div class="big-block-img">
+       
+
         
-        
-        </div>
         
         
       </div>
-      <button class="btn-carousel-next" style="width:200px; height: 200px; position: absolute; z-index: 9999999; right: 0; display: none;" id="nextBtn">Следующий</button>
+      <div class="big-block-img" style="display: none;">
+       
+        
+      </div>
+      
     </div>
     <div class="aboutusPopUp-wrapper popup_item popUphidden">
       <div class="aboutusPopUp-block">
@@ -88,14 +158,15 @@
           <ul class="cart_item_list">
           </ul>
         </div>
+      
+        <hr>
         <div class="total_price_block">
           <span class="total_price_content"></span>
         </div>
-        <hr>
         <div class="cart_form">
           <div class="cart-input-group">
             <label for="cart_name">Ваше ФИО</label>
-            <input class="cart-input" type="text" id="cart_name" placeholder="Глеб Харьков">
+            <input class="cart-input" type="text" id="cart_name" placeholder="Иванов Иван Иванович">
           </div>
           <div class="cart-input-group">
             <label for="cart_email">Ваш Email</label>
@@ -120,14 +191,20 @@
     </div>
     
 
- 
+
 
     <main>
       <div class="product-perview-block">
         <div class="product-pictures-block">
           <div class="product-picture-future" id="0"></div>
+               
           <div class="product-pictures">
+            {% for x  in files_img %}
+            <div class="product-picture zzz" id="{{ loop.index0 }}" style="background: center url('/static/img/img_shop/{{product_type}}/{{product_id}}/img/{{x}}'); background-size: cover;"></div>
+   
+            {% endfor %}
           </div>
+        
         </div>
         
         <div class="product-description-block">
@@ -137,10 +214,15 @@
           <div class="product-description">
             <span class="product-description-text">{{i[-3]}}</span>      
           </div>
+          <div class="const-description">
+            <div class="const-description-text">Диаметр отверстий: 16мм</div>      
+            <div class="const-description-text">Шаг отверстий: 50x50мм</div>      
+            <div class="const-description-text">Высота боковых ребер: 100мм</div>      
+          </div>
           <div class="product-description">
             <span class="material">Марка стали: {{i[-1]}}</span>
           </div>
-          <div class="product-size"><span>Размер стола: {{i[-2]}}</span></div>
+          <div class="product-size"><span>Габаритный размер: {{i[-2]}}</span></div>
           <div class="btn-conteiner">
             <div class="btn-warp">Толщина металла:</div>
             <select class="SizeSelect" id="SizeSelect">  
@@ -162,13 +244,13 @@
             <div class="btn-warp">Сборка сварочного стола:</div>
             <select class="SizeSelect" name="" id="assembly">
               <option value="0">Без сборки</option>
-              <option value="5000">Со сборкой - 5000 руб.</option>
+              <option value="{{list_json[0][-4]}}">Со сборкой - {{list_json[0][-4]}} руб.</option>
             </select>
              <div class="btn-warp">Закладные пластины для ножек:</div>
             <select class="SizeSelect" name="" id="legs" >
               <option value="0">Без закладных</option>
-              <option value="1600">Со закладными для 4-ех ножек - 1600 руб.</option>
-              <option value="2400">Со закладными для 6-ти ножек - 2400 руб.</option>
+              <option value="1600">С закладными для 4-ех ножек - 1600 руб.</option>
+              <option value="2400">С закладными для 6-ти ножек - 2400 руб.</option>
             </select> 
           </div>
           
@@ -190,7 +272,10 @@
           {% else%}
           <div class="product-title">{{i[1]}}</div>
           <div class="product-description">
-            <span class="product-description-text">{{i[4]}}</span>
+            <span class="product-description-text">Толщина металла: {{i[-1]}}</span>
+          </div>
+          <div class="product-description">
+            <span class="product-description-text">{{i[3]}}</span>
           </div>
           <div class="product-price_block">
             <div class="product-price">
@@ -209,64 +294,136 @@
         </div>
       </div>
       <div class="cotalog-title-block">
-        <span>Смотрите, что у нас еще есть</span>
+        <span>С этим товаром покупают</span>
       </div>
-      <div class="products-block">
-        <div class="products-grid-block">
-          {% if tb == "table" %}
-          {% for j in items_table %}
-          <div class="item-block">
-            <a href="/table/product-modal/{{j[0]}}">
-              <div class="item-picture"
-                style="background: url('/static/img/img_shop/table/{{j[0]}}/{{j[0]}}.jpg') no-repeat; background-position: center; background-size: cover;">
+
+      <div class="product-scroll-conteiner">
+        <button class="tovarSkrollPrev" id="tovarSkrollPrev"></button>
+
+
+          <div class="products-block">
+            <div class="products-grid-block">
+              {% if tb == "table" %}
+              {% for j in items_tooling %}
+              <div class="item-block">
+                <a href="/tooling/product-modal/{{j[0]}}">
+                  <div class="item-picture" 
+                    style="background: url('/static/img/img_shop/tooling/{{j[0]}}/{{j[0]}}.jpg') no-repeat; background-position: center; background-size: cover;">
+              
+                  </div>
+              
+              <div class="item-information">
+                <span class="item-name">{{j[1]}}</span>
+                
+                <span class="item-description">{{j[2]}} p.</span>
+              </div>
+            </a>
+            </div>
+            {% endfor %}
+            {% elif tb == "tooling"%}
+            {% for j in items_table %}
+            <div class="item-block">
+              <a href="/table/product-modal/{{j[0]}}">
+                <div class="item-picture"
+                  style="background: url('/static/img/img_shop/table/{{j[0]}}/{{j[0]}}.jpg') no-repeat; background-position: center; background-size: cover;">
+                </div>
+            
+            
+              <div class="item-information">
+                <span class="item-name">{{j[1]}}</span>
+              
+                <span class="item-description">{{j[2]}} p.</span>
+              </div>
             </a>
           </div>
+
+
+
+        
+          {% endfor %}
+          {% elif tb == "other_product" %}
+          {% for j in items_other %}
+          <div class="item-block">
+            <a href="/others/product-modal/{{j[0]}}">
+              <div class="item-picture"
+                style="background: url('/static/img/img_shop/other_product/{{j[0]}}/{{j[0]}}.jpg') no-repeat; background-position: center; background-size: cover;">
+              </div>
+      
+        
           <div class="item-information">
             <span class="item-name">{{j[1]}}</span>
-            <span class="item-price">{{j[7]}}</span>
-            <span class="item-description">{{j[2]}} p.</span>
-          </div>
-        </div>
-        {% endfor %}
-        {% elif tb == "tooling"%}
-        {% for j in items_tooling %}
-        <div class="item-block">
-          <a href="/tooling/product-modal/{{j[0]}}">
-            <div class="item-picture"
-              style="background: url('/static/img/img_shop/tooling/{{j[0]}}/{{j[0]}}.jpg') no-repeat; background-position: center; background-size: cover;">
+            <span class="item-description">{{j[2]}}</span>
           </a>
+          </div>
+          
+          </div>
+          {% endfor %}
+          {% else %}
+          ERROR
+          {% endif %}
+          </div>
+          </div>
+
+
+        <button class="tovarSkrollNext" id="tovarSkrollNext"></button>
+      </div>
+      
+    </main>
+  <footer>
+    <div class="footer-title">
+      Обратная связь
+    </div>
+    <div class="footer-warp">
+      <p>Для более подробной консультации Вы можете заполнить форму обратной связи и наши
+          специалисты свяжутся с вами в ближайшее время.
+      </p>
+      <div class="form-warp">
+        <div class="warp-form-inp">
+          <input type="text" placeholder="Ваше ФИО">
+          <input class="cart-input" type="tel" id="cart_tel" placeholder="+7**********" pattern="[0-9]{1}[0-9]{3}[0-9]{3}[0-9]{4}" oninput="formatTel(this)">
         </div>
-        <div class="item-information">
-          <span class="item-name">{{j[1]}}</span>
-          <span class="item-price">{{j[3]}}</span>
-          <span class="item-description">{{j[2]}} p.</span>
+        <div class="warp-form-inp-radio">
+          <input type="text" placeholder="example@gmail.com">
+          <div class="warp-radio">
+          <input type="checkbox" class="custom-checkbox" id="checkPesonalData2" checked="" required=""> Согласие на обработку персональных данных.*
         </div>
+        
       </div>
-      {% endfor %}
-      {% elif tb == "other_product" %}
-      {% for j in items_other %}
-      <div class="item-block">
-        <a href="/others/product-modal/{{j[0]}}">
-          <div class="item-picture"
-            style="background: url('/static/img/img_shop/other_product/{{j[0]}}/{{j[0]}}.jpg') no-repeat; background-position: center; background-size: cover;">
-        </a>
+          <button class="btn-contact-form" type="submit">Получить консультацию</button>
       </div>
-      <div class="item-information">
-        <span class="item-name">{{j[1]}}</span>
-        <span class="item-description">{{j[2]}}</span>
-      </div>
-  </div>
-  {% endfor %}
-  {% else %}
-  ERROR
-  {% endif %}
-  </div>
-  </div>
-  </main>
-  <footer></footer>
+    </div>
+  
+  </footer>
+  <div class="footer-line"> ООО «Лазер БиТ» 2020</div>
   </div>
 
 
+  <script>
+window.addEventListener("load", function() {
+    const productsGridBlock = document.querySelector('.products-grid-block');
+    const carouselTovar = document.querySelector('.products-block');
+    const prevBtnTovar = document.querySelector('#tovarSkrollPrev');
+    const nextBtnTovar = document.querySelector('#tovarSkrollNext');
+    
+    if (productsGridBlock.children.length < 3){
+        nextBtnTovar.style.display ='none'
+        prevBtnTovar.style.display ='none'
+    }
+});
+
+ 
+
+   let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      if (cart.length > 0){
+        document.querySelector('.basket-check-warp').style.display = 'block';
+        let count_quantity = 0
+            for(j=0; j<cart.length; j++){
+                count_quantity += Number(cart[j]['quantity'])
+                console.log(cart[j]['quantity'])
+            }
+        document.querySelector('.basket-check').innerText = count_quantity
+      }
+  </script>
   <script>
     btnSubmit()
   </script>
@@ -274,8 +431,17 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
   <script src="{{ url_for('static', filename= 'js/burger.js') }}"></script>
   <script src="{{ url_for('static', filename= 'js/cart.js') }}"></script>
-  <script src="{{ url_for('static', filename = 'js/modal.js') }}"></script>
+
   {% endfor %}
+  <a href="https://api.whatsapp.com/send?phone=79048303535" class="btn-WhatsApp">
+    <img src="/static/img/WhatsApp.png" alt="">
+    <div>
+      Написать
+    </div>
+    <div>
+      WhatsApp
+    </div>
+  </a> 
 </body>
 
 </html>

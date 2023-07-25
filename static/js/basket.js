@@ -3,7 +3,7 @@ window.onload = () => {
     function getTableSize() {
         const selectElement = document.querySelector("select#SizeSelect");
         if (selectElement !== null) {
-            const pattern = /Цена за (\d+mm)/;
+            const pattern = /Цена за (\d+мм)/;
             return selectElement.querySelector(`option[value="${selectElement.value}"]`).innerHTML.match(pattern)[1];
         } else {
             return null;
@@ -46,21 +46,44 @@ window.onload = () => {
         const productPrice = document.querySelector("div.product-price").innerHTML;
         const productImg = extractImageUrl(document.querySelector("div.product-picture").getAttribute("style"));
         const type = getType();
-        
+
+
+
+         
+        let check = 0
+        for (i = 0; i < cart.length; i++){
+            if (cart[i]['img'] === productImg ){
+                if (cart[i]['Assembly'] === getAssembly() && cart[i]['Legs'] == getLegs() && cart[i]['tableGrid'] === (getGridSize() || "no") && cart[i]['tableSize'] === getTableSize()){
+                cart[i]['quantity'] = parseInt(cart[i]['quantity']) + 1
+                check = 1
+                console.log(`${parseInt(cart[i]['quantity']) + 1}`)
+                }
+                
+            }
+        }
+       
+        if ( check != 1){
         cart.push({
             id: cart.length,
             type: type,
             img: productImg,
             name: productName,
-            tableSize: getTableSize() || "no" ,
+            tableSize: getTableSize(),
             tableGrid: getGridSize() || "no",
             price: parseInt(productPrice),
             Assembly: getAssembly(),
             Legs: getLegs(),
             quantity: 1,
         });
+    }
         // Save updated cart to local storage and render it
         localStorage.setItem('cart', JSON.stringify(cart));
+        let cart_bask = JSON.parse(localStorage.getItem('cart')) || [];
+        let totalQuantity = cart_bask.reduce((total, item) => total + item.quantity, 0);
+
+            
+        document.querySelector('.basket-check-warp').style.display = 'block';
+        document.querySelector('.basket-check').innerText = totalQuantity
     });
 
     // Extract the product type from the URL

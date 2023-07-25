@@ -18,15 +18,21 @@
  
       <header>
         <div class="wrap-logo">
-          <a href="/" class="logo"><img class="img-logo" src="/static/img/photo_2023-05-18_11-59-51.jpg" alt=""/></a>
+          <a href="/" class="logo"><img class="img-logo" src="/static/img/logo.png" alt=""/></a>
         </div>
+        
         <div style="display: flex;">
           <nav class="link-head">
             <a href="/">Главная</a>
             <a id="Contacts" href="#about">Контакты</a>
             <a id="delivery-buy" href="#about">Доставка и оплата</a>
             <a id="AboutUs" href="#about">О нас</a>
-            <div class="cart_btn"></div>
+            <div class="bsket-warp">
+              <div class="cart_btn"></div> 
+              <div class="basket-check-warp" style="display: none;">
+                <div class="basket-check"></div>
+              </div>
+            </div>
           </nav>
         </div>
       </header>
@@ -38,21 +44,101 @@
           <div><a href="./">Главная</a></div>
           <div><a href="#about"></a>Контакт</div>
           <div><a id="delivery-buy" href="#about">Доставка и оплата</a></div>
-          <div><a href="#about">О нас</a></div>
+          <div><a href="#about">О нас</a>
+          </div>
         </div>
       </div>
       <!-- burger-menu -->
 
-      <div class="contactsPopUp-wrapper popup_item popUphidden">
-        <div class="contactsPopUp-block">
-          <span>Contacts:</span>
+      <div class="basketEndPopUp-wrapper popup_item popUphidden" id="popupDiv">
+        <div class="basketEndPopUp-block">
+          <span class="conatc-span">Заказ сформирован</span>
           <br>
-          <span>Phone: xxxxxx</span>
-          <span>Email: xxxxxx</span>
-          <span>Telegrtam: xxxxxx </span>
-          <span>Discord: xxxxxx</span>  
+          <div class="contact-warp">
+            <span>С Вами свяжется менеджер для уточнения информации, составит договор и выставит счет на оплату.</span>
+           
+          </div>
         </div>
       </div>
+      
+      <div class="contactsPopUp-wrapper popup_item popUphidden">
+        <div class="contactsPopUp-block">
+          <span class="conatc-span">Контакт</span>
+          <br>
+          <div class="contact-warp">
+            <span>Phone: + 789237324589</span>
+            <span>Email: logam-group@mail.ru</span>
+            <span>YouTube: <a href="https://www.youtube.com/@LOGAM-group">youtube.com/@LOGAM-group</a></span>
+            <span>Telegrtam: @Owlomir </span>
+            <span>Адрес производства: г. Ижевск, ул. Спортивная, д. 71</span>  
+          </div>
+        </div>
+      </div>
+
+
+      <div class="deliveryPopUp-wrapper popup_item popUphidden">
+        <div class="deliveryPopUp-block">
+          <span>Оформление заказа</span>
+          <br>
+          <div class="deliveryPopUp-conteiner">
+            <div>
+              1. Выберете товар и добавьте его в корзину. После того, как выбраны все необходимые позиции - перейдите в корзину.
+            </div>
+            <div>
+              2. Заполните обязательные поля для оформления заказа и нажмите кнопку «Сделать заказ».
+            </div>
+            <div>
+              3. После оформления заявки с Вами свяжется менеджер для уточнения заказа, составит договор и выставит счет на оплату.
+            </div>
+          </div>
+          <br>
+          <span>Оплата</span>
+          
+          <div class="deliveryPopUp-conteiner">
+            <div>
+              Оплата осуществляется в два этапа:
+            </div>
+            <div>
+              1. Авансовый платеж составляет 50%.
+            </div>
+            <div>
+              2. Второй платеж 50% производится в день отгрузки товара.
+            </div>
+            <div>
+              Работаем по наличному/безналичному расчету от физических лиц и юридических лиц. Возможность оплаты по счету с НДС и без НДС.
+            </div>
+            <div>
+              Помогаем в оформлении документов для получения соц.контракта (гранта), консультируем, предоставляем всю тех.документацию, а также все необходимые документы для отчета перед службой занятости и налоговой службы.
+            </div>
+          </div>
+          <br>
+          <br>
+          <span>Срок изготовления и доставка</span>
+          
+          <div class="deliveryPopUp-conteiner">
+            <div>
+              Срок изготовления составляет 10-14 рабочих дней или по согласованию с клиентом.
+            </div>
+            <div>
+              Бесплатная доставка груза в пределах г. Ижевска или до терминала транспортной компании.
+            </div>
+            <div>
+              Доставка по России и странам СНГ осуществляется транспортной компанией за счет покупателя или путем самовывоза товара со склада нашей компании в г. Ижевск.
+            </div>
+            <div>
+              Отгрузка товара возможна только после полной оплаты заказа.
+            </div>
+          </div>
+          <br>
+      
+          <div>Более подробную консультацию по доставке и расчет стоимости можно получить у наших менеджеров:</div>
+          <div>тел. +7 (999) 999-99-99</div>
+          <div>эл.почта: logam-group@mail.ru</div>
+        </div>
+      </div>
+      
+
+
 
       <div class="aboutusPopUp-wrapper popup_item popUphidden">
         <div class="aboutusPopUp-block">
@@ -64,6 +150,7 @@
 
 
       <div class="cart_wrapper hidden ">
+  
         <div class="cart_block">
           <div class="cart_label"><span>Корзина</span></div>
           <hr>
@@ -71,14 +158,14 @@
             <ul class="cart_item_list">
             </ul>
           </div>
+          <hr>
           <div class="total_price_block">
             <span class="total_price_content"></span>
           </div>
-          <hr>
           <div class="cart_form">
             <div class="cart-input-group">
               <label for="cart_name">Ваше ФИО</label>
-              <input class="cart-input" type="text" id="cart_name" placeholder="Глеб Харьков">
+              <input class="cart-input" type="text" id="cart_name" placeholder="Иванов Иван Иванович">
             </div>
             <div class="cart-input-group">
               <label for="cart_email">Ваш Email</label>
@@ -101,24 +188,33 @@
           </div>
         </div>
       </div>
-      
+      <a href="https://api.whatsapp.com/send?phone=79048303535" class="btn-WhatsApp">
+        <img src="../static/img/WhatsApp.png" alt="">
+        <div>
+          Написать
+        </div>
+        <div>
+          WhatsApp
+        </div>
+      </a> 
     <main>
       <div class="info">
-        <h1 class="label">МАГАЗИН: LOGAM</h1>
+        <h1 class="label">Сварочно-сборочные столы 3D c системой D16 <br> от Российского бренда LOGAM</h1>
         <!-- <span class="description">Наша компания занимается производством сварочных столов 3D с системой D16.</span> -->
-        <span class="shop-label">Наша компания занимается производством сварочных столов 3D с системой D16.</span>
+ 
         
-        <a class="WhatsApp-btn">Написать в WhatsApp</a>
+        
       </div>  
       <div class="shop-container">
         <div class="shop-grid">
           <a href="./tables">
             <div class="shop-item" id="shop-item-">
-              <div class="shop-item-img" style="background: url('https://vektor-grupp.ru/upload/resize_cache/webp/upload/medialibrary/bfd/bfdcd159511460f42b305b61e68310b0.webp') no-repeat; background-position: center; background-size: cover;"></div>
+              <div class="shop-item-img" style="background: url('/static/img/table-logo.jpg') no-repeat; background-position: center; background-size: cover;"></div>
               <div class="preview-text">
-              <div class="product-name">Столы</div>
+              <!-- <div class="product-name">Сварочные столы с системой D16</div> -->
+              <button class="btn-index-product" type="submit">Сварочные столы с системой D16</button>
               <!-- <div class="short-description">Столы - это предметы мебели, которые используются для различных целей</div> -->
-              <div class="product-price">от 50 000 руб.</div>
+             
               </div>
             </div>
           </a>
@@ -126,9 +222,10 @@
             <div class="shop-item" id="shop-item-">
               <div class="shop-item-img" style="background: url('https://i.ytimg.com/vi/Af_YN0KPoq4/maxresdefault.jpg') no-repeat; background-position: center; background-size: cover;"></div>
               <div class="preview-text">
-              <div class="product-name">Оснастка</div>
+              <!-- <div class="product-name">Оснастка</div> -->
+              <button class="btn-index-product" type="submit">Оснастка</button>
               <!-- <div class="short-description">Оснастка для сварочных столов относится к оборудованию и аксессуарам</div> -->
-              <div class="product-price">от мало руб.</div>
+              
               </div>
             </div>
           </a>
@@ -136,17 +233,110 @@
             <div class="shop-item" id="shop-item-">
               <div class="shop-item-img" style="background: url('https://i.ytimg.com/vi/Af_YN0KPoq4/maxresdefault.jpg') no-repeat; background-position: center; background-size: cover;"></div>
               <div class="preview-text">
-              <div class="product-name">Others</div>
+              <!-- <div class="product-name">Другая продукция</div> -->
+              <button class="btn-index-product" type="submit">Другая продукция</button>
               <!-- <div class="short-description">I'm sorry, I'm not sure what you are asking. Can you please provide more information or clarify your question?</div> -->
-              <div class="product-price">от мало руб.</div>
+             
               </div>
             </div>
           </a>
         </div>
       </div>
-      <footer></footer>
+
+      <div class="description-market">
+        <p>
+          Компания LOGAM занимается производством cборочно-сварочных столов ЗD с системой D16 и
+          комплектующих к ним, а так же сопутствующего сварочного оборудования.
+        </p>
+        <p>
+          Наша продукция помогает оптимизировать сварочный процесс и повысить качество изготавлемых изделий.
+        </p>
+        <p>
+          В каталоге представлен широкий ассортимент с различными размерами и конфигурациями, возможен
+          индивидуальный подход и изготовление по Вашему запросу.
+        </p>
+        <p>
+          На всех этапах производства каждое изделие проходит контроль качества, который направлен
+          на тщательную проверку установленных параметров. Это помогает нам исключить появления брака и производить товар в допустимых нормах ГОСТа.
+        </p>
+      
+      </div>
+
+      <footer>
+        <div class="footer-title">
+          Обратная связь
+        </div>
+        <div class="footer-warp">
+          <p>Для более подробной консультации Вы можете заполнить форму обратной связи и наши
+              специалисты свяжутся с вами в ближайшее время.
+          </p>
+          <div class="form-warp">
+            <div class="warp-form-inp">
+              <input type="text" placeholder="Ваше ФИО">
+              <input class="cart-input" type="tel" id="cart_tel" placeholder="+7**********" pattern="[0-9]{1}[0-9]{3}[0-9]{3}[0-9]{4}" oninput="formatTel(this)">
+            </div>
+            <div class="warp-form-inp-radio">
+              <input type="text" placeholder="example@gmail.com">
+              <div class="warp-radio">
+              <input type="checkbox" class="custom-checkbox" id="checkPesonalData2" checked="" required=""> Согласие на обработку персональных данных.*
+            </div>
+            
+          </div>
+              <button class="btn-contact-form" type="submit">Получить консультацию</button>
+          </div>
+        </div>
+      
+      </footer>
+        <div class="footer-line"> ООО «Лазер БиТ» 2020</div>
     </main>
 
+    <script>
+
+    if (localStorage.getItem('changeStyles')) {
+      
+        const popupDiv = document.getElementById('popupDiv');
+        // Изменяем стили элемента
+        popupDiv.classList.remove('popUphidden');
+        popupDiv.classList.add('popUpshown');
+        document.body.style.overflow = 'hidden';
+        localStorage.removeItem('changeStyles');
+      }
+
+
+      const basketEndPopUp = document.querySelector(".basketEndPopUp-wrapper")
+
+      basketEndPopUp.addEventListener("click", () => {
+      basketEndPopUp.classList.remove("popUpshown")
+      basketEndPopUp.classList.add("popUphidden")
+
+      body.style.overflow = 'visible';
+  })
+
+  basketEndPopUp.addEventListener("mouseover", (e) => {
+    if (!e.target.closest(".basketEndPopUp-block")) {
+      basketEndPopUp.classList.add("popUpHover")
+    }
+    if (e.target.closest(".basketEndPopUp-block")) {
+      basketEndPopUp.classList.remove("popUpHover")
+    }
+});
+
+
+
+
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      
+      
+      if (cart.length > 0){
+        document.querySelector('.basket-check-warp').style.display = 'block';
+        let count_quantity = 0
+            for(j=0; j<cart.length; j++){
+                count_quantity += Number(cart[j]['quantity'])
+                console.log(cart[j]['quantity'])
+            }
+        document.querySelector('.basket-check').innerText = count_quantity
+      }
+    </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="{{ url_for('static', filename = 'js/burger.js') }}"></script>
     <script src="{{ url_for('static', filename = 'js/modal.js') }}"></script>
